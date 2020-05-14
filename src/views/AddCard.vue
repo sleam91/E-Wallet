@@ -2,7 +2,7 @@
     <div class="add-card">
         <top :header="'ADD A NEW BANK CARD'"/>
         <p>NEW CARD</p>
-        <card />
+        <card empty/>
         <card-form />
     </div>
 </template>

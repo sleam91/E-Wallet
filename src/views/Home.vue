@@ -2,7 +2,7 @@
     <div class="home">
         <top :header="'E-WALLET'" />
         <p>ACTIVE CARD</p>
-        <card />
+        <card/>
         <card-stack />
         <router-link to="/add">
             <button>Add New Card</button>
@@ -25,6 +25,7 @@ export default {
     },
     data() {
         return {
+            
             cardList: this.$root.getCardList()
         };
     }
@@ -32,4 +33,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.home{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 </style>

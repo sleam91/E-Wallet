@@ -1,15 +1,15 @@
 <template>
     <div class="card-form">
         <p>CARD NUMBER</p>
-        <input />
+        <input v-model="card.cardNumber"/>
         <p>CARD HOLDER NAME</p>
-        <input placeholder="FIRSTNAME LASTNAME" />
+        <input v-model="card.name" placeholder="FIRSTNAME LASTNAME" />
         <p>VALID THRU</p>
-        <input />
+        <input v-model="card.valThru" />
         <p>CCV</p>
-        <input />
+        <input v-model="card.ccv" />
         <p>VENDOR</p>
-        <select id="vendor">
+        <select v-model="card.vendor" id="vendor">
             <option selected hidden></option>
             <option>BITCOIN INC</option>
             <option>NINJA BANK</option>
@@ -18,7 +18,7 @@
         </select>
         <p></p>
         <router-link to="/">
-            <button>Add Card</button>
+            <button @click="addCard">Add Card</button>
         </router-link>
     </div>
 </template>
@@ -26,6 +26,25 @@
 <script>
 export default {
     name: "CardForm",
+    data() {
+        return {
+            card: {
+                id: 0,
+                cardNumber: "",
+                name: "",
+                valThru: "",
+                ccv: null,
+                vendor: ""
+            }
+        };
+    },
+    methods:{
+        addCard(){
+            this.card.id=this.$root.getCardList().length+1
+            this.$root.getCardList().push(this.card)
+        }
+    }
+    
 };
 </script>
 

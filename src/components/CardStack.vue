@@ -1,6 +1,6 @@
 <template>
     <div class="card-stack">
-        <card v-for="card in cardList" :key="card" :card="card" />
+        <card v-for="card in cardList" :key="card.id" :card="card" />
     </div>
 </template>
 
@@ -23,4 +23,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.card-stack{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 </style>
