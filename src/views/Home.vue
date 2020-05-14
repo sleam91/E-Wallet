@@ -2,7 +2,7 @@
     <div class="home">
         <top :header="'E-WALLET'" />
         <p>ACTIVE CARD</p>
-        <card/>
+        <card v-if="this.$route.params.id"/>
         <card-stack />
         <router-link to="/add">
             <button>Add New Card</button>
