@@ -1,8 +1,9 @@
 <template>
     <div class="add-card">
-        <top/>
-        <card/>
-        <card-form/>
+        <top :header="'ADD A NEW BANK CARD'"/>
+        <p>NEW CARD</p>
+        <card />
+        <card-form />
     </div>
 </template>
 
@@ -16,6 +17,10 @@ export default {
         Top,
         Card,
         CardForm
+    },
+    data() {
+        return {
+        };
     }
 };
 </script>

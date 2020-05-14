@@ -1,6 +1,7 @@
 <template>
     <div class="home">
-        <top />
+        <top :header="'E-WALLET'" />
+        <p>ACTIVE CARD</p>
         <card />
         <card-stack />
         <router-link to="/add">
@@ -21,6 +22,11 @@ export default {
         Top,
         Card,
         CardStack
+    },
+    data() {
+        return {
+            cardList: this.$root.getCardList()
+        };
     }
 };
 </script>
