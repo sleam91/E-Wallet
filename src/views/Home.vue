@@ -3,9 +3,9 @@
         <top :header="'E-WALLET'" />
         <p>ACTIVE CARD</p>
         <card :card="chosenCard" />
-        <card-stack :cardList="cardList" @change="updateChosenCard"/>
-        <router-link to="/add">
-            <button>Add New Card</button>
+        <card-stack :cardList="cardList" @switch="updateChosenCard"/>
+        <router-link class="add-card" to="/add">
+            <button>ADD A NEW CARD</button>
         </router-link>
     </div>
 </template>
@@ -35,9 +35,6 @@ export default {
             this.$root.setChosenCardId(payload.id)
             this.cardList= this.$root.getCardList().filter(card=>card.id!==payload.id)
         },
-        testUpdate(){
-            
-        }
 
     }
 };
@@ -48,5 +45,21 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100vw;
 }
+.add-card {
+    width: 90%;
+    button {
+        font-size: x-large;
+        font-weight: bold;
+        border: 1px solid black;
+        background: white;
+        border-radius: 10px;
+        padding: 2rem 6.5rem;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
 </style>

@@ -22,7 +22,7 @@ export default {
     methods:{
         chooseCard(card){
             console.log("here")
-            this.$emit('change',card)
+            this.$emit('switch',card)
         }
     }
 };

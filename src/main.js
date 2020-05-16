@@ -13,21 +13,34 @@ new Vue({
         name: "Sebastian Alvarez",
         valThru: "10/22",
         ccv: 456,
-        vendor: "vendor-bitcoin.svg"
+        vendor: "vendor-bitcoin.svg",
+        chip:"chip-dark.svg"
       }, {
         id: 2,
         cardNumber: "2342 2344 7657 1231",
-        name: "Blip Blop",
+        name: "Oopsie Doopsie",
         valThru: "12/21",
         ccv: 564,
-        vendor: "vendor-evil.svg"
+        vendor: "vendor-evil.svg",
+        chip:"chip-light.svg"
       }, {
         id: 3,
         cardNumber: "9999 3234 8768 7876",
         name: "Blip Blop",
         valThru: "01/21",
         ccv: 987,
-        vendor: "vendor-ninja.svg"
+        vendor: "vendor-ninja.svg",
+        chip:"chip-light.svg"
+        
+      },{
+        id: 4,
+        cardNumber: "0000 1111 2222 7777",
+        name: "Pop Peep",
+        valThru: "06/23",
+        ccv: 234,
+        vendor: "vendor-blockchain.svg",
+        chip:"chip-light.svg"
+        
       }],
       chosenCardId:1
     }
