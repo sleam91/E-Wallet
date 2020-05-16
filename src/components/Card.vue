@@ -10,8 +10,6 @@ export default {
     },
     data() {
         return {
-            // card:this.$root.getCard(this.$route.params.id),
-            // cardList: this.$root.getCardList()
         };
     },
     computed:{
@@ -27,6 +25,9 @@ export default {
     max-width: 350px;
     height: 40%;
     margin:1rem 0;
-    padding:1rem
+    padding:1rem;
+    &:hover{
+        cursor: pointer;
+    }
 }
 </style>

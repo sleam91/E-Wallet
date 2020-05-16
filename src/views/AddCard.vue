@@ -1,8 +1,8 @@
 <template>
     <div class="add-card">
-        <top :header="'ADD A NEW BANK CARD'"/>
+        <top :header="'ADD A NEW BANK CARD'" />
         <p>NEW CARD</p>
-        <card empty/>
+        <card :card="emptyCard" />
         <card-form />
     </div>
 </template>
@@ -20,10 +20,23 @@ export default {
     },
     data() {
         return {
+            emptyCard: {
+                id: 0,
+                cardNumber: "XXXX XXXX XXXX XXXX",
+                name: "FIRSTNAME LASTNAME",
+                valThru: "MM/YY",
+                ccv: null,
+                vendor: ""
+            }
         };
     }
 };
 </script>
 
 <style lang="scss" scoped>
+.add-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 </style>

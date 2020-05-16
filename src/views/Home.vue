@@ -1,9 +1,9 @@
 <template>
-    <div class="home">
+    <div class="home" >
         <top :header="'E-WALLET'" />
         <p>ACTIVE CARD</p>
-        <card v-if="this.$route.params.id"/>
-        <card-stack />
+        <card :card="chosenCard" />
+        <card-stack :cardList="cardList" @change="updateChosenCard"/>
         <router-link to="/add">
             <button>Add New Card</button>
         </router-link>
@@ -25,9 +25,20 @@ export default {
     },
     data() {
         return {
-            
-            cardList: this.$root.getCardList()
+            chosenCard: this.$root.getCard(this.$root.getChosenCardId()),
+            cardList: this.$root.getCardList().filter(card=>card.id!==this.$root.getChosenCardId())
         };
+    },
+    methods:{
+        updateChosenCard(payload){
+            this.chosenCard=this.$root.getCard(payload.id)
+            this.$root.setChosenCardId(payload.id)
+            this.cardList= this.$root.getCardList().filter(card=>card.id!==payload.id)
+        },
+        testUpdate(){
+            
+        }
+
     }
 };
 </script>

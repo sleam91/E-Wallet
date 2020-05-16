@@ -28,7 +28,8 @@ new Vue({
         valThru: "01/21",
         ccv: 987,
         vendor: "Ninja Bank"
-      }]
+      }],
+      chosenCardId:1
     }
   },
   methods: {
@@ -37,6 +38,12 @@ new Vue({
     },
     getCard(id) {
       return this.cardList.find(card => card.id == id)
+    },
+    setChosenCardId(id){
+      this.chosenCardId=id
+    },
+    getChosenCardId(){
+      return this.chosenCardId
     }
   },
   router,

@@ -1,6 +1,6 @@
-<template>
-    <div class="card-stack">
-        <card v-for="card in cardList" :key="card.id" :card="card" />
+<template >
+    <div class="card-stack" >
+        <card v-for="card in cardList" :key="card.id" :card="card" @click.native="chooseCard(card)"/>
     </div>
 </template>
 
@@ -9,14 +9,20 @@ import Card from "@/components/Card";
 export default {
     name: "CardStack",
     props: {
-        
+        cardList:Array
     },
     components: {
         Card
     },
     data(){
         return{
-            cardList: this.$root.getCardList()
+      
+        }
+    },
+    methods:{
+        chooseCard(card){
+            console.log("here")
+            this.$emit('change',card)
         }
     }
 };
