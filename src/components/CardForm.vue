@@ -11,10 +11,10 @@
         <p>VENDOR</p>
         <select v-model="card.vendor" id="vendor">
             <option selected hidden></option>
-            <option>BITCOIN INC</option>
-            <option>NINJA BANK</option>
-            <option>BLOCK CHAIN INC</option>
-            <option>EVIL CORP</option>
+            <option value="@/assets/vendor-bitcoin.svg">BITCOIN INC</option>
+            <option value="@/assets/vendor-ninja.svg">NINJA BANK</option>
+            <option value="@/assets/vendor-blockchain.svg">BLOCK CHAIN INC</option>
+            <option value="@/assets/vendor-evil.svg">EVIL CORP</option>
         </select>
         <p></p>
         <router-link to="/">
