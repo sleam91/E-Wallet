@@ -114,6 +114,7 @@ select {
 
 select {
     appearance: none;
+    background-color: white;
     background-image: url("https://img.icons8.com/material-sharp/28/000000/expand-arrow.png");
     background-repeat: no-repeat;
     background-position: 95%;

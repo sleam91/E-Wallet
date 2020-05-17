@@ -86,7 +86,7 @@ export default {
         width: 6vw;
     }
 
-    @media screen and (min-width: 440px) {
+    @media screen and (min-width: 454px) {
         .chip,.vendor {
             width: initial;
         }
