@@ -1,6 +1,6 @@
 <template>
     <div class="top">
-        <h1>{{header}}</h1>
+        <h1 v-html="header"></h1>
     </div>
 </template>
 
@@ -14,4 +14,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+h1{
+    font-size: 2.2em;
+    font-weight: bold;
+}
 </style>

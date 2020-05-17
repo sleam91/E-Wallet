@@ -1,5 +1,5 @@
 <template>
-    <div class="card" :style="colorBackground">
+    <div class="card" :style="card.colors">
         <div class="icons">
             <img :src="require('@/assets/'+card.chip)" alt />
             <img :src="require('@/assets/'+card.vendor)" alt />
@@ -26,34 +26,11 @@ export default {
     },
     data() {
         return {
-          colorBackground:{
-              backgroundColor:this.getColorBackground(),
-              color:this.card.vendor==="vendor-bitcoin.svg"?"black":"white"
-          }
+
         };
     },
     methods:{
-        getColorBackground(){
-            let backgroundColor;
-            switch(this.card.vendor){
-                case "vendor-bitcoin.svg":
-                    backgroundColor="gold"
-                    break;
-                case "vendor-blockchain.svg":
-                    backgroundColor="purple"
-                    break;
-                case "vendor-evil.svg":
-                    backgroundColor="crimson"
-                    break;
-                case "vendor-ninja.svg":
-                    backgroundColor="#333333"
-                    break;
-                default:
-                    backgroundColor="rgba(211, 211, 211, 0.877)"
-                break;
-            }
-            return backgroundColor
-        }
+
     },
     computed: {}
 };
@@ -61,16 +38,16 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-    background: rgba(211, 211, 211, 0.877);
+    background: lightgrey;
     font-family: "PT Mono", monospace;
     // width: 90%;
     max-width: 550px;
     min-width: 400px;
-    height: 40%;
+    max-height: 243px;
     margin: 1rem 0;
     padding: 1rem;
     border-radius: 10px;
-    box-shadow: 0px 0px 15px 1px rgba(211, 211, 211, 0.69);
+    box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69);
     &:hover {
         cursor: pointer;
     }
@@ -84,6 +61,11 @@ export default {
         display: flex;
         justify-content: space-between;
         text-align: start;
+        .valid{
+            h3{
+            display: flex;
+            justify-content: flex-end;}
+        }
     }
 }
 </style>

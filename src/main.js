@@ -14,7 +14,11 @@ new Vue({
         valThru: "10/22",
         ccv: 456,
         vendor: "vendor-bitcoin.svg",
-        chip:"chip-dark.svg"
+        chip:"chip-dark.svg",
+        colors: {
+          backgroundColor: "rgba(255, 180, 66)",
+          color: "black"
+      }
       }, {
         id: 2,
         cardNumber: "2342 2344 7657 1231",
@@ -22,7 +26,11 @@ new Vue({
         valThru: "12/21",
         ccv: 564,
         vendor: "vendor-evil.svg",
-        chip:"chip-light.svg"
+        chip:"chip-light.svg",
+        colors: {
+          backgroundColor: "rgba(233, 47, 78)",
+          color: "white"
+      }
       }, {
         id: 3,
         cardNumber: "9999 3234 8768 7876",
@@ -30,7 +38,11 @@ new Vue({
         valThru: "01/21",
         ccv: 987,
         vendor: "vendor-ninja.svg",
-        chip:"chip-light.svg"
+        chip:"chip-light.svg",
+        colors: {
+          backgroundColor: "rgba(54, 54, 54)",
+          color: "white"
+      }
         
       },{
         id: 4,
@@ -39,7 +51,11 @@ new Vue({
         valThru: "06/23",
         ccv: 234,
         vendor: "vendor-blockchain.svg",
-        chip:"chip-light.svg"
+        chip:"chip-light.svg",
+        colors: {
+          backgroundColor : "rgba(127, 80, 228)",
+          color: "white"
+      }
         
       }],
       chosenCardId:1

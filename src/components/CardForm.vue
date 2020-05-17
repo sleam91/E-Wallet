@@ -4,13 +4,19 @@
         <input v-model="card.cardNumber" @input="update()" />
         <p>CARD HOLDER NAME</p>
         <input v-model="card.name" placeholder="FIRSTNAME LASTNAME" @input="update()" />
-        <p>VALID THRU</p>
-        <input v-model="card.valThru" @input="update()" />
-        <p>CCV</p>
-        <input v-model="card.ccv" />
+        <div class="date-ccv">
+            <div>
+                <p>VALID THRU</p>
+                <input v-model="card.valThru" @input="update()" />
+            </div>
+            <div>
+                <p>CCV</p>
+                <input v-model="card.ccv" />
+            </div>
+        </div>
         <p>VENDOR</p>
         <select v-model="card.vendor" id="vendor" @change="update()">
-            <option selected hidden></option>
+            <option disabled hidden></option>
             <option value="vendor-bitcoin.svg">BITCOIN INC</option>
             <option value="vendor-ninja.svg">NINJA BANK</option>
             <option value="vendor-blockchain.svg">BLOCK CHAIN INC</option>
@@ -35,7 +41,11 @@ export default {
                 valThru: "",
                 ccv: null,
                 vendor: "",
-                chip: "chip-dark.svg"
+                chip: "chip-dark.svg",
+                colors: {
+                    backgroundColor: "gold",
+                    color: "black"
+                }
             }
         };
     },
@@ -43,6 +53,9 @@ export default {
         addCard() {
             this.card.vendor = this.card.vendor || "vendor-bitcoin.svg";
             this.card.id = this.$root.getCardList().length + 1;
+            this.card.colors.backgroundColor = this.getColorBackground();
+            this.card.colors.color =
+                this.card.vendor === "vendor-bitcoin.svg" ? "black" : "white";
             this.$root.getCardList().push(this.card);
         },
         update() {
@@ -51,6 +64,24 @@ export default {
                     ? "chip-dark.svg"
                     : "chip-light.svg"),
                 this.$emit("update", this.card);
+        },
+        getColorBackground() {
+            let backgroundColor;
+            switch (this.card.vendor || "vendor-bitcoin.svg") {
+                case "vendor-bitcoin.svg":
+                    backgroundColor = "rgba(255, 180, 66)";
+                    break;
+                case "vendor-blockchain.svg":
+                    backgroundColor = "rgba(127, 80, 228)";
+                    break;
+                case "vendor-evil.svg":
+                    backgroundColor = "rgba(233, 47, 78)";
+                    break;
+                case "vendor-ninja.svg":
+                    backgroundColor = "rgba(54, 54, 54)";
+                    break;
+            }
+            return backgroundColor;
         }
     }
 };
@@ -60,8 +91,10 @@ export default {
 .card-form {
     font-family: "PT Mono", monospace;
     width: 100vw;
+    max-width: 483px;
 }
-input,select{
+input,
+select {
     font-size: x-large;
     font-family: "PT Mono", monospace;
     padding: 1.2rem 1rem;
@@ -71,9 +104,19 @@ input,select{
     border-color: black;
     border-width: 1px;
 }
+
+select {
+    appearance: none;
+    background-image: url("https://img.icons8.com/material-sharp/28/000000/expand-arrow.png");
+    background-repeat: no-repeat;
+    background-position: 95%;
+    max-width: 434px;
+}
 .add-card {
-    width: 90%;
+    max-width: 434px;
     button {
+        width: 90%;
+        margin-top: 2rem;
         font-size: x-large;
         font-weight: bold;
         color: white;
@@ -82,6 +125,29 @@ input,select{
         padding: 1.5rem 9rem;
         &:hover {
             cursor: pointer;
+        }
+    }
+}
+
+p {
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-align: start;
+    margin-left: 1.5rem;
+    margin-bottom: 0.2rem;
+}
+
+.date-ccv {
+    display: flex;
+
+    justify-content: space-between;
+    div {
+        width: 50%;
+        p {
+            margin-left: 1.5rem;
+        }
+        input {
+            width: 66.5%;
         }
     }
 }

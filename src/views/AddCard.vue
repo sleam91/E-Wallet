@@ -1,8 +1,8 @@
 <template>
     <div class="add-card">
-        <top :header="'ADD A NEW BANK CARD'" />
+        <top :header="'ADD A NEW <br/> BANK CARD'" />
         <p>NEW CARD</p>
-        <card :card="emptyCard" :style="colorBackground" />
+        <card :card="emptyCard" :style="emptyCard.colors" />
         <card-form @update="update" />
     </div>
 </template>
@@ -27,11 +27,11 @@ export default {
                 valThru: "MM/YY",
                 ccv: null,
                 vendor: "vendor-bitcoin.svg",
-                chip: "chip-dark.svg"
-            },
-            colorBackground: {
-                backgroundColor: "rgba(211, 211, 211, 0.877)",
-                color:"black"
+                chip: "chip-dark.svg",
+                colors: {
+                    backgroundColor: "rgba(214, 214, 214)",
+                    color: "black"
+                }
             }
         };
     },
@@ -43,8 +43,8 @@ export default {
             this.emptyCard.valThru = payload.valThru || this.emptyCard.valThru;
             this.emptyCard.vendor = payload.vendor || this.emptyCard.vendor;
             this.emptyCard.chip = payload.chip || this.emptyCard.chip;
-            this.colorBackground.backgroundColor = this.getColorBackground();
-            this.colorBackground.color =
+            this.emptyCard.colors.backgroundColor = this.getColorBackground();
+            this.emptyCard.colors.color =
                 this.emptyCard.vendor === "vendor-bitcoin.svg"
                     ? "black"
                     : "white";
@@ -53,19 +53,16 @@ export default {
             let backgroundColor;
             switch (this.emptyCard.vendor) {
                 case "vendor-bitcoin.svg":
-                    backgroundColor = "gold";
+                    backgroundColor = "rgba(255, 180, 66)";
                     break;
                 case "vendor-blockchain.svg":
-                    backgroundColor = "purple";
+                    backgroundColor = "rgba(127, 80, 228)";
                     break;
                 case "vendor-evil.svg":
-                    backgroundColor = "crimson";
+                    backgroundColor = "rgba(233, 47, 78)";
                     break;
                 case "vendor-ninja.svg":
-                    backgroundColor = "#333333";
-                    break;
-                default:
-                    backgroundColor = "rgba(211, 211, 211, 0.877)";
+                    backgroundColor = "rgba(54, 54, 54)";
                     break;
             }
             return backgroundColor;
