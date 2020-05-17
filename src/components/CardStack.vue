@@ -1,6 +1,13 @@
 <template >
-    <div class="card-stack" >
-        <card v-for="card in cardList" :key="card.id" :card="card" @click.native="chooseCard(card)"/>
+    <div class="card-stack">
+        <card 
+            v-for="(card,i) in cardList"
+            :key="card.id"
+            :card="card"
+            @click.native="chooseCard(card)"
+            :style="cardStack(i)"
+            
+        />
     </div>
 </template>
 
@@ -9,29 +16,51 @@ import Card from "@/components/Card";
 export default {
     name: "CardStack",
     props: {
-        cardList:Array
+        cardList: Array
     },
     components: {
         Card
     },
-    data(){
-        return{
-      
-        }
+    data() {
+        return {
+            cardStack(i) {
+                return { 
+                    boxShadow:'none',
+                    marginTop: i * 4 + "rem",
+                    '&:hover': 'transform: scale(1.1)',
+                    zIndex: i
+                    };
+            }
+        };
     },
-    methods:{
-        chooseCard(card){
-            console.log("here")
-            this.$emit('switch',card)
+    methods: {
+        chooseCard(card) {
+            this.$emit("switch", card);
         }
     }
 };
 </script>
 
 <style lang="scss" scoped>
-.card-stack{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.card-stack {
+    justify-content: center;
+    display: grid;
+    grid-template-areas: "card";
+    box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69);
+    margin-top: 2rem;
+    border-radius: 10px;
+    // pointer-events: none;
+    background: rgba(211, 211, 211, 0.363);
 }
+.card:hover  {
+   transform: translateY(-1rem);
+
+}   
+
+// .card-stack>.card{
+//     pointer-events: auto;
+// }
+// // .card-stack:hover{
+       
+// //    }
 </style>

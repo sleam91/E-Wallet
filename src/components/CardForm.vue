@@ -1,7 +1,7 @@
 <template>
     <div class="card-form">
         <p>CARD NUMBER</p>
-        <input v-model="card.cardNumber" @input="update()" />
+        <input v-model="card.cardNumber"  @input="update()"/>
         <p>CARD HOLDER NAME</p>
         <input v-model="card.name" placeholder="FIRSTNAME LASTNAME" @input="update()" />
         <div class="date-ccv">
@@ -15,7 +15,7 @@
             </div>
         </div>
         <p>VENDOR</p>
-        <select v-model="card.vendor" id="vendor" @change="update()">
+        <select v-model="card.vendor" id="vendor" @change="updateBackgroundColor()">
             <option disabled hidden></option>
             <option value="vendor-bitcoin.svg">BITCOIN INC</option>
             <option value="vendor-ninja.svg">NINJA BANK</option>
@@ -43,7 +43,7 @@ export default {
                 vendor: "",
                 chip: "chip-dark.svg",
                 colors: {
-                    backgroundColor: "gold",
+                    backgroundColor: "rgba(214, 214, 214)",
                     color: "black"
                 }
             }
@@ -59,11 +59,15 @@ export default {
             this.$root.getCardList().push(this.card);
         },
         update() {
-            (this.card.chip =
+            this.card.chip =
                 !this.card || this.card.vendor === "vendor-bitcoin.svg"
                     ? "chip-dark.svg"
-                    : "chip-light.svg"),
-                this.$emit("update", this.card);
+                    : "chip-light.svg";
+            this.$emit("update", this.card);
+        },
+        updateBackgroundColor() {
+
+                this.$emit("updateBackgroundColor", this.card.vendor);
         },
         getColorBackground() {
             let backgroundColor;
@@ -89,9 +93,10 @@ export default {
 
 <style lang="scss" scoped>
 .card-form {
+    margin-top: 1rem;
     font-family: "PT Mono", monospace;
     width: 100vw;
-    max-width: 483px;
+    max-width: 434px;
 }
 input,
 select {
@@ -99,10 +104,12 @@ select {
     font-family: "PT Mono", monospace;
     padding: 1.2rem 1rem;
     border-radius: 10px;
-    max-width: 400px;
+    // max-width: 434px;
     width: 90%;
     border-color: black;
     border-width: 1px;
+    box-sizing: border-box;
+    text-transform: uppercase;
 }
 
 select {
@@ -110,10 +117,9 @@ select {
     background-image: url("https://img.icons8.com/material-sharp/28/000000/expand-arrow.png");
     background-repeat: no-repeat;
     background-position: 95%;
-    max-width: 434px;
 }
 .add-card {
-    max-width: 434px;
+    // max-width: 434px;
     button {
         width: 90%;
         margin-top: 2rem;
@@ -122,7 +128,8 @@ select {
         color: white;
         background: black;
         border-radius: 10px;
-        padding: 1.5rem 9rem;
+        padding: 1.5rem 0;
+
         &:hover {
             cursor: pointer;
         }
@@ -140,14 +147,19 @@ p {
 .date-ccv {
     display: flex;
 
-    justify-content: space-between;
+    // justify-content: space-between;
+    // max-width: 434px;
+    width: 95%;
+
     div {
-        width: 50%;
+        // width: 50%;
+
         p {
-            margin-left: 1.5rem;
+            // margin-left: 1.5rem;
         }
         input {
-            width: 66.5%;
+            margin-left: 1.3rem;
+            // margin-right: 1.5rem;
         }
     }
 }

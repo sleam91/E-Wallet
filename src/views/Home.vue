@@ -1,9 +1,9 @@
 <template>
-    <div class="home" >
+    <div class="home">
         <top :header="'E-WALLET'" />
         <p>ACTIVE CARD</p>
         <card :card="chosenCard" />
-        <card-stack :cardList="cardList" @switch="updateChosenCard"/>
+        <card-stack :cardList="cardList" @switch="updateChosenCard" />
         <router-link class="add-card" to="/add">
             <button>ADD A NEW CARD</button>
         </router-link>
@@ -26,40 +26,48 @@ export default {
     data() {
         return {
             chosenCard: this.$root.getCard(this.$root.getChosenCardId()),
-            cardList: this.$root.getCardList().filter(card=>card.id!==this.$root.getChosenCardId())
+            cardList: this.$root
+                .getCardList()
+                .filter(card => card.id !== this.$root.getChosenCardId())
         };
     },
-    methods:{
-        updateChosenCard(payload){
-            this.chosenCard=this.$root.getCard(payload.id)
-            this.$root.setChosenCardId(payload.id)
-            this.cardList= this.$root.getCardList().filter(card=>card.id!==payload.id)
-        },
-
+    methods: {
+        updateChosenCard(payload) {
+            this.chosenCard = this.$root.getCard(payload.id);
+            this.$root.setChosenCardId(payload.id);
+            this.cardList = this.$root
+                .getCardList()
+                .filter(card => card.id !== payload.id);
+        }
     }
 };
 </script>
 
 <style lang="scss" scoped>
-.home{
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100vw;
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    max-width: 434px;
+    margin-left: 1rem;
+    margin-right: 1rem;
 }
 .add-card {
-    width: 90%;
+    width: 100%;
     button {
+        min-width: 93%;
+        margin-top: 2rem;
         font-size: x-large;
         font-weight: bold;
         border: 1px solid black;
         background: white;
         border-radius: 10px;
-        padding: 2rem 6.5rem;
+        padding: 1.5rem 0;
         &:hover {
             cursor: pointer;
         }
     }
 }
-
 </style>

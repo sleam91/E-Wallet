@@ -2,8 +2,8 @@
     <div class="add-card">
         <top :header="'ADD A NEW <br/> BANK CARD'" />
         <p>NEW CARD</p>
-        <card :card="emptyCard" :style="emptyCard.colors" />
-        <card-form @update="update" />
+        <card class="card" :card="emptyCard" :style="[emptyCard.colors,margin]" />
+        <card-form @update="update" @updateBackgroundColor="updateBackgroundColor" />
     </div>
 </template>
 
@@ -32,6 +32,10 @@ export default {
                     backgroundColor: "rgba(214, 214, 214)",
                     color: "black"
                 }
+            },
+            margin: {
+                marginLeft: "1rem",
+                marginRight: "1rem"
             }
         };
     },
@@ -41,8 +45,10 @@ export default {
                 payload.cardNumber || this.emptyCard.cardNumber;
             this.emptyCard.name = payload.name || this.emptyCard.name;
             this.emptyCard.valThru = payload.valThru || this.emptyCard.valThru;
-            this.emptyCard.vendor = payload.vendor || this.emptyCard.vendor;
             this.emptyCard.chip = payload.chip || this.emptyCard.chip;
+        },
+        updateBackgroundColor(payload) {
+            this.emptyCard.vendor = payload || this.emptyCard.vendor;
             this.emptyCard.colors.backgroundColor = this.getColorBackground();
             this.emptyCard.colors.color =
                 this.emptyCard.vendor === "vendor-bitcoin.svg"
@@ -76,5 +82,8 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    // max-width: 434px;
+    // margin-left: 1rem;
+    // margin-right: 1rem;
 }
 </style>

@@ -25,34 +25,37 @@ export default {
         card: Object
     },
     data() {
-        return {
-
-        };
+        return {};
     },
-    methods:{
-
-    },
+    methods: {},
     computed: {}
 };
 </script>
 
 <style lang="scss" scoped>
 .card {
+    grid-area: card;    
+    display: flex;
+    flex-direction: column;
     background: lightgrey;
     font-family: "PT Mono", monospace;
+    text-transform: uppercase;
     // width: 90%;
-    max-width: 550px;
-    min-width: 400px;
+    max-width: 396px;
+    // min-width: 400px;
     max-height: 243px;
-    margin: 1rem 0;
+    min-height: 243px;
+    margin: 1rem 0 0 0;
     padding: 1rem;
+    padding-right: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69);
+    box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69   );
+    text-shadow:  0px -1px 0px rgba(0, 0, 0, 0.616);
     &:hover {
         cursor: pointer;
     }
-    display: flex;
-    flex-direction: column;
+
+    
     .icons {
         display: flex;
         justify-content: space-between;
@@ -61,11 +64,15 @@ export default {
         display: flex;
         justify-content: space-between;
         text-align: start;
-        .valid{
-            h3{
-            display: flex;
-            justify-content: flex-end;}
+        .valid {
+            h3 {
+                display: flex;
+                justify-content: flex-end;
+            }
         }
+    }
+    h3,h1,p{
+        // font-size: ;
     }
 }
 </style>
