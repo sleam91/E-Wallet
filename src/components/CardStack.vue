@@ -31,7 +31,7 @@ export default {
         cardStack(i) {
             return {
                 boxShadow: "none",
-                marginTop: i * 4 + "rem",
+                // marginTop: i * 4 + "rem",
                 zIndex: i
             };
         }
@@ -44,7 +44,8 @@ export default {
 .card-stack {
     justify-content: center;
     display: grid;
-    grid-template-areas: "card";
+    // grid-template-areas: "card";
+    grid-auto-rows: 4rem;
     box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69);
     margin-top: 2rem;
     border-radius: 10px;

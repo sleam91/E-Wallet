@@ -56,6 +56,7 @@ export default {
 }
 .add-card {
     width: 100%;
+    margin-top: 40vw;
     button {
         min-width: 93%;
         margin-top: 2rem;
@@ -68,6 +69,11 @@ export default {
         &:hover {
             cursor: pointer;
         }
+    }
+}
+@media screen and (min-width: 454px) {
+    .add-card{
+        margin-top: 13rem;
     }
 }
 </style>

@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-    grid-area: card;
+    // grid-area: card;
     display: flex;
     flex-direction: column;
     background: lightgrey;
@@ -44,9 +44,9 @@ export default {
     max-width: 396px;
     min-width: 80vw;
     max-height: 243px;
-    min-height: 150px;
+    min-height: 50vw;
 
-    margin: 1rem 0 0 0;
+    // margin: 1rem 0 0 0;
     padding: 1rem;
     padding-right: 1.5rem;
     border-radius: 10px;
