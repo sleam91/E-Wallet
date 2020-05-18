@@ -58,7 +58,7 @@ new Vue({
       }
         
       }],
-      chosenCardId:1
+      chosenCardId:0
     }
   },
   methods: {
