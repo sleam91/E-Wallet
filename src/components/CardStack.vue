@@ -27,7 +27,6 @@ export default {
                 return { 
                     boxShadow:'none',
                     marginTop: i * 4 + "rem",
-                    '&:hover': 'transform: scale(1.1)',
                     zIndex: i
                     };
             }
