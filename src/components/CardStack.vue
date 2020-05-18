@@ -51,6 +51,9 @@ export default {
     // pointer-events: none;
     background: rgba(211, 211, 211, 0.363);
 }
+.card{
+    transition: transform 0s
+}
 .card:hover {
     transform: translateY(-1rem);
 }
