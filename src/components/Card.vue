@@ -42,8 +42,9 @@ export default {
     text-transform: uppercase;
     // width: 90%;
     max-width: 396px;
-
+    min-width: 80vw;
     max-height: 243px;
+    min-height: 150px;
 
     margin: 1rem 0 0 0;
     padding: 1rem;
