@@ -2,7 +2,7 @@
     <div class="home">
         <top :header="'E-WALLET'" />
         <p>ACTIVE CARD</p>
-        <card :card="chosenCard" />
+        <card :card="chosenCard" @click.native="flip"/>
         <card-stack :cardList="cardList" @switch="updateChosenCard" />
         <router-link class="add-card" to="/add">
             <button>ADD A NEW CARD</button>
@@ -38,6 +38,9 @@ export default {
             this.cardList = this.$root
                 .getCardList()
                 .filter(card => card.id !== payload.id);
+        },
+        flip() {
+            console.log("here");
         }
     }
 };
