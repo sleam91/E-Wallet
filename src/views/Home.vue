@@ -4,7 +4,8 @@
         <p>ACTIVE CARD</p>
         <card :card="chosenCard" v-if="this.$root.getChosenCardId()"/>
         <card-stack :cardList="cardList" @switch="updateChosenCard" />
-        <router-link class="add-card" to="/add">
+        <router-link class="add-card" to="/add" v-if="this.$root.getCardList().length<12" >
+        <!-- :style="{marginTop:this.$root.getCardList().length*0.1+14+'rem'}" -->
             <button>ADD A NEW CARD</button>
         </router-link>
     </div>
@@ -56,10 +57,10 @@ export default {
 }
 .add-card {
     width: 100%;
-    margin-top: 40vw;
+    margin-top: 3rem;
     button {
         min-width: 93%;
-        margin-top: 2rem;
+        // margin-top: 2rem;
         font-size: x-large;
         font-weight: bold;
         border: 1px solid black;
@@ -71,9 +72,9 @@ export default {
         }
     }
 }
-@media screen and (min-width: 454px) {
-    .add-card{
-        margin-top: 13rem;
-    }
-}
+// @media screen and (min-width: 454px) {
+//     .add-card{
+//         margin-top: 2rem;
+//     }
+// }
 </style>

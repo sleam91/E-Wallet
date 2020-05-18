@@ -1,5 +1,5 @@
 <template >
-    <div class="card-stack">
+    <div class="card-stack" :style="cssCardStack">
         <card
             v-for="(card,i) in cardList"
             :key="card.id"
@@ -21,7 +21,10 @@ export default {
         Card
     },
     data() {
-        return {};
+        return {
+            rowHeight: 4 - 0.2 * +this.cardList.length,
+            // height: 
+        };
     },
     methods: {
         chooseCard(card) {
@@ -36,7 +39,21 @@ export default {
             };
         }
     },
-    computed: {}
+    computed: {
+        cssCardStack() {
+            
+            console.log(this.cardList.length)
+            console.log(this.rowHeight)
+            console.log(this.rowHeight*this.cardList.length)
+            console.log(this.rowHeight*this.cardList.length+243)
+            // console.log(this.height)
+            return {
+                '--gridAutoRows': this.rowHeight+'rem',
+                '--minHeightDesktop':'calc(243px + '+((this.cardList.length-1)*this.rowHeight+1.9)+'rem)',
+                '--minHeightMobile':'calc(50vw + '+((this.cardList.length-1)*15+7)+'vw)'
+            };
+        }
+    }
 };
 </script>
 
@@ -46,11 +63,14 @@ export default {
     display: grid;
     // grid-template-areas: "card";
     grid-auto-rows: 15vw;
+    min-height: var(--minHeightMobile);
     box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69);
     margin-top: 2rem;
     border-radius: 10px;
     // pointer-events: none;
     background: rgba(211, 211, 211, 0.363);
+    
+    overflow: visible;
 }
 .card:hover {
     transform: translateY(-1rem);
@@ -64,7 +84,9 @@ export default {
 // //    }
 @media screen and (min-width: 454px) {
     .card-stack {
-        grid-auto-rows: 4rem;
+        grid-auto-rows: var(--gridAutoRows);
+        min-height: var(--minHeightDesktop);
+        // grid-auto-rows: 4rem;
     }
 }
 </style>
