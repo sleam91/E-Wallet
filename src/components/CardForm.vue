@@ -1,7 +1,7 @@
 <template>
     <div class="card-form">
         <p>CARD NUMBER</p>
-        <input v-model="card.cardNumber"  @input="update()"/>
+        <input v-model="card.cardNumber" @input="update()" />
         <p>CARD HOLDER NAME</p>
         <input v-model="card.name" placeholder="FIRSTNAME LASTNAME" @input="update()" />
         <div class="date-ccv">
@@ -56,18 +56,21 @@ export default {
             this.card.colors.backgroundColor = this.getColorBackground();
             this.card.colors.color =
                 this.card.vendor === "vendor-bitcoin.svg" ? "black" : "white";
+            this.card.chip =
+                this.card.vendor === "vendor-bitcoin.svg"
+                    ? "chip-dark.svg"
+                    : "chip-light.svg";
             this.$root.getCardList().push(this.card);
         },
         update() {
-            this.card.chip =
-                !this.card || this.card.vendor === "vendor-bitcoin.svg"
-                    ? "chip-dark.svg"
-                    : "chip-light.svg";
             this.$emit("update", this.card);
         },
         updateBackgroundColor() {
-
-                this.$emit("updateBackgroundColor", this.card.vendor);
+            this.card.chip =
+                this.card.vendor === "vendor-bitcoin.svg"
+                    ? "chip-dark.svg"
+                    : "chip-light.svg";
+            this.$emit("updateBackgroundColor", this.card);
         },
         getColorBackground() {
             let backgroundColor;
