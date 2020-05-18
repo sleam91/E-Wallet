@@ -41,12 +41,6 @@ export default {
     },
     computed: {
         cssCardStack() {
-            
-            console.log(this.cardList.length)
-            console.log(this.rowHeight)
-            console.log(this.rowHeight*this.cardList.length)
-            console.log(this.rowHeight*this.cardList.length+243)
-            // console.log(this.height)
             return {
                 '--gridAutoRows': this.rowHeight+'rem',
                 '--minHeightDesktop':'calc(243px + '+((this.cardList.length-1)*this.rowHeight+1.9)+'rem)',
