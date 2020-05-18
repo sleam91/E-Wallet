@@ -45,7 +45,7 @@ export default {
     justify-content: center;
     display: grid;
     // grid-template-areas: "card";
-    grid-auto-rows: 4rem;
+    grid-auto-rows: 15vw;
     box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69);
     margin-top: 2rem;
     border-radius: 10px;
@@ -62,4 +62,9 @@ export default {
 // // .card-stack:hover{
 
 // //    }
+@media screen and (min-width: 454px) {
+    .card-stack {
+        grid-auto-rows: 4rem;
+    }
+}
 </style>
