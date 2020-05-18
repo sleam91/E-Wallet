@@ -42,9 +42,9 @@ export default {
     text-transform: uppercase;
     // width: 90%;
     max-width: 396px;
-    // min-width: 80%;
+
     max-height: 243px;
-    // min-height: 243px;
+
     margin: 1rem 0 0 0;
     padding: 1rem;
     padding-right: 1.5rem;
@@ -85,9 +85,13 @@ export default {
     .vendor {
         width: 6vw;
     }
-
-    @media screen and (min-width: 454px) {
-        .chip,.vendor {
+}
+@media screen and (min-width: 454px) {
+    .card {
+        min-width: 396px;
+        min-height: 243px;
+        .chip,
+        .vendor {
             width: initial;
         }
         h1 {
