@@ -1,12 +1,11 @@
 <template >
     <div class="card-stack">
-        <card 
+        <card
             v-for="(card,i) in cardList"
             :key="card.id"
             :card="card"
             @click.native="chooseCard(card)"
             :style="cardStack(i)"
-            
         />
     </div>
 </template>
@@ -22,21 +21,22 @@ export default {
         Card
     },
     data() {
-        return {
-            cardStack(i) {
-                return { 
-                    boxShadow:'none',
-                    marginTop: i * 4 + "rem",
-                    zIndex: i
-                    };
-            }
-        };
+        return {};
     },
     methods: {
         chooseCard(card) {
             this.$emit("switch", card);
+        },
+
+        cardStack(i) {
+            return {
+                boxShadow: "none",
+                marginTop: i * 4 + "rem",
+                zIndex: i
+            };
         }
-    }
+    },
+    computed: {}
 };
 </script>
 
@@ -51,15 +51,14 @@ export default {
     // pointer-events: none;
     background: rgba(211, 211, 211, 0.363);
 }
-.card:hover  {
-   transform: translateY(-1rem);
-
-}   
+.card:hover {
+    transform: translateY(-1rem);
+}
 
 // .card-stack>.card{
 //     pointer-events: auto;
 // }
 // // .card-stack:hover{
-       
+
 // //    }
 </style>
