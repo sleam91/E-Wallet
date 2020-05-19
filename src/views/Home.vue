@@ -3,7 +3,7 @@
         <top :header="'E-WALLET'" />
         <p v-if="hasActiveCard">ACTIVE CARD</p>
         <p v-else>SELECT A CARD</p>
-        <card :card="chosenCard" v-if="hasActiveCard" />
+        <card :card="chosenCard" v-if="hasActiveCard" @click.native="flip"/>
         <img
             class="trash"
             v-if="hasActiveCard"
@@ -58,6 +58,9 @@ export default {
                 .getCardList()
                 .filter(card => card.id !== payload.id);
         },
+        flip() {
+            console.log("here");
+        },
         toggleWarning() {
             this.showWarning = !this.showWarning;
         },
@@ -75,6 +78,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
+    perspective: 1000px;
     display: flex;
     flex-direction: column;
     align-items: center;

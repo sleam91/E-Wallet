@@ -50,6 +50,7 @@ export default {
                 payload.cardNumber || this.emptyCard.cardNumber;
             this.emptyCard.name = payload.name || this.emptyCard.name;
             this.emptyCard.valThru = payload.valThru || this.emptyCard.valThru;
+            this.emptyCard.ccv = payload.ccv;
         },
         updateBackgroundColor(payload) {
             this.emptyCard.vendor = payload.vendor || this.emptyCard.vendor;
@@ -85,6 +86,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    perspective: 1000px;
     // max-width: 434px;
     // margin-left: 1rem;
     // margin-right: 1rem;
