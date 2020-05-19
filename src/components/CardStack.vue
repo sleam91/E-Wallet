@@ -44,11 +44,11 @@ export default {
         cssCardStack() {
             return {
                 "--gridAutoRows": this.rowHeight + "rem",
-                "--minHeightDesktop":
+                "--heightDesktop":
                     "calc(243px + " +
                     ((this.cardList.length - 1) * this.rowHeight + 1.9) +
                     "rem)",
-                "--minHeightMobile":
+                "--heightMobile":
                     "calc(50vw + " +
                     ((this.cardList.length - 1) * 15 + 7) +
                     "vw)"
@@ -57,11 +57,11 @@ export default {
         cssCardStackLimit() {
             return {
                 "--gridAutoRows": this.rowHeightLimit + "rem",
-                "--minHeightDesktop":
+                "--heightDesktop":
                     "calc(243px + " +
                     ((this.stackLimit- 1) * this.rowHeightLimit + 1.9) +
                     "rem)",
-                "--minHeightMobile":
+                "--heightMobile":
                     "calc(50vw + " + ((this.stackLimit - 1) * 15 + 7) + "vw)"
             };
         }
@@ -75,7 +75,7 @@ export default {
     display: grid;
     // grid-template-areas: "card";
     grid-auto-rows: 15vw;
-    min-height: var(--minHeightMobile);
+    height: var(--heightMobile);
     box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69);
     margin-top: 2rem;
     border-radius: 10px;
@@ -103,7 +103,7 @@ export default {
 @media screen and (min-width: 454px) {
     .card-stack {
         grid-auto-rows: var(--gridAutoRows);
-        min-height: var(--minHeightDesktop);
+        height: var(--heightDesktop);
         // grid-auto-rows: 4rem;
     }
 }
