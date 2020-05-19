@@ -9,7 +9,7 @@
             v-if="hasActiveCard"
             src="https://img.icons8.com/dotty/48/000000/trash.png"
             alt="remove"
-            v-on:click="toggleWarning"
+            @click="toggleWarning"
         />
         <card-stack :cardList="cardList" @switch="updateChosenCard" />
         <router-link class="add-card" to="/add">
@@ -19,8 +19,8 @@
         <div class="overlay" v-if="showWarning" :style="{zIndex:cardList.length}">
             <div class="popup">
                 <h2>Are you sure you want to delete your Active Card?</h2>
-                <button v-on:click="removeCard">Yes</button>
-                <button v-on:click="toggleWarning">No</button>
+                <button @click="removeCard">Yes</button>
+                <button @click="toggleWarning">No</button>
             </div>
         </div>
     </div>
