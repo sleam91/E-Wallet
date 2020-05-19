@@ -71,6 +71,7 @@ export default {
 
 <style lang="scss" scoped>
 .card-stack {
+    padding-top:1rem;
     justify-content: center;
     display: grid;
     // grid-template-areas: "card";
