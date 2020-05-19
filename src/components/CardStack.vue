@@ -34,7 +34,7 @@ export default {
 
         cardStack(i) {
             return {
-                boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.205) inset",
+                // boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.205) inset",
                 // marginTop: i * 4 + "rem",
                 zIndex: i
             };
