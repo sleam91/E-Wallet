@@ -11,7 +11,7 @@
             alt="remove"
             @click="toggleWarning"
         />
-        <card-stack :cardList="cardList" @switch="updateChosenCard" />
+        <card-stack :cardList="cardList" @switch="updateChosenCard" v-if="cardList.length>0"/>
         <router-link class="add-card" to="/add">
         <!-- :style="{marginTop:this.$root.getCardList().length*0.1+14+'rem'}" -->
             <button>ADD A NEW CARD</button>
