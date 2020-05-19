@@ -129,7 +129,8 @@ export default {
     .back-card {
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
-        transform: rotateX(180deg);
+        transform: rotateX(180deg) translateY(-150px);
+        
         display: none;
         width: 100%;
         height: 100%;
