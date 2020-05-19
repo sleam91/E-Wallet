@@ -49,19 +49,26 @@ export default {
     min-height: 150px;
 }
 .card {
-    grid-area: card;
-
+    
+    display: flex;
+    flex-direction: column;
     background: lightgrey;
     font-family: "PT Mono", monospace;
     text-transform: uppercase;
-    width: 100%;
-    height: 100%;
-
-    margin: 1rem 0 0 0;
+    // width: 90%;
+    max-width: 396px;
+    min-width: 80vw;
+    max-height: 243px;
+    min-height: 50vw;
+    
+    // width: 100%;
+    // height: 100%;
+    
+    // margin: 1rem 0 0 0;
     padding: 1rem;
     padding-right: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69);
+    box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69),0 0 0 1px rgba(0, 0, 0, 0.205) inset;
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.616);
 
     &:hover {

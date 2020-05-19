@@ -1,5 +1,5 @@
 <template >
-    <div class="card-stack">
+    <div class="card-stack" :style="[cardList.length>stackLimit?cssCardStackLimit:cssCardStack]">
         <card
             v-for="(card,i) in cardList"
             :key="card.id"
@@ -21,7 +21,11 @@ export default {
         Card
     },
     data() {
-        return {};
+        return {
+            rowHeight: 4 - 0.2 * +this.cardList.length,
+            rowHeightLimit: 4 - 0.2 * +5,
+            stackLimit:10
+        };
     },
     methods: {
         chooseCard(card) {
@@ -30,13 +34,38 @@ export default {
 
         cardStack(i) {
             return {
-                boxShadow: "none",
-                marginTop: i * 4 + "rem",
+                boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.205) inset",
+                // marginTop: i * 4 + "rem",
                 zIndex: i
             };
         }
     },
-    computed: {}
+    computed: {
+        cssCardStack() {
+            return {
+                "--gridAutoRows": this.rowHeight + "rem",
+                "--minHeightDesktop":
+                    "calc(243px + " +
+                    ((this.cardList.length - 1) * this.rowHeight + 1.9) +
+                    "rem)",
+                "--minHeightMobile":
+                    "calc(50vw + " +
+                    ((this.cardList.length - 1) * 15 + 7) +
+                    "vw)"
+            };
+        },
+        cssCardStackLimit() {
+            return {
+                "--gridAutoRows": this.rowHeightLimit + "rem",
+                "--minHeightDesktop":
+                    "calc(243px + " +
+                    ((this.stackLimit- 1) * this.rowHeightLimit + 1.9) +
+                    "rem)",
+                "--minHeightMobile":
+                    "calc(50vw + " + ((this.stackLimit - 1) * 15 + 7) + "vw)"
+            };
+        }
+    }
 };
 </script>
 
@@ -44,12 +73,22 @@ export default {
 .card-stack {
     justify-content: center;
     display: grid;
-    grid-template-areas: "card";
+    // grid-template-areas: "card";
+    grid-auto-rows: 15vw;
+    min-height: var(--minHeightMobile);
     box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69);
     margin-top: 2rem;
     border-radius: 10px;
     // pointer-events: none;
     background: rgba(211, 211, 211, 0.363);
+
+    overflow: scroll;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar{
+        display: none;
+    }
 }
 .card{
     transition: transform 0s
@@ -64,4 +103,11 @@ export default {
 // // .card-stack:hover{
 
 // //    }
+@media screen and (min-width: 454px) {
+    .card-stack {
+        grid-auto-rows: var(--gridAutoRows);
+        min-height: var(--minHeightDesktop);
+        // grid-auto-rows: 4rem;
+    }
+}
 </style>

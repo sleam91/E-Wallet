@@ -1,17 +1,17 @@
 <template>
     <div class="card-form">
         <p>CARD NUMBER</p>
-        <input v-model="card.cardNumber" @input="update()" />
+        <input v-model="card.cardNumber" @input="update()" maxlength="19"/>
         <p>CARD HOLDER NAME</p>
-        <input v-model="card.name" placeholder="FIRSTNAME LASTNAME" @input="update()" />
+        <input v-model="card.name" placeholder="FIRSTNAME LASTNAME" @input="update()" maxlength="24"  />
         <div class="date-ccv">
             <div>
                 <p>VALID THRU</p>
-                <input v-model="card.valThru" @input="update()" />
+                <input v-model="card.valThru" @input="update()" maxlength="5"/>
             </div>
             <div>
                 <p>CCV</p>
-                <input v-model="card.ccv" />
+                <input v-model="card.ccv" type="number"/>
             </div>
         </div>
         <p>VENDOR</p>
@@ -52,7 +52,7 @@ export default {
     methods: {
         addCard() {
             this.card.vendor = this.card.vendor || "vendor-bitcoin.svg";
-            this.card.id = this.$root.getCardList().length + 1;
+            this.card.id = this.$root.idCounter++;
             this.card.colors.backgroundColor = this.getColorBackground();
             this.card.colors.color =
                 this.card.vendor === "vendor-bitcoin.svg" ? "black" : "white";
@@ -159,6 +159,7 @@ p {
         // width: 50%;
 
         p {
+            white-space: nowrap;
             // margin-left: 1.5rem;
         }
         input {
