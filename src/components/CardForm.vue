@@ -11,7 +11,7 @@
             </div>
             <div>
                 <p>CCV</p>
-                <input v-model="card.ccv" type="number"/>
+                <input v-model="card.ccv" type="number" @input="update()"/>
             </div>
         </div>
         <p>VENDOR</p>

@@ -24,7 +24,7 @@ export default {
         return {
             rowHeight: 4 - 0.2 * +this.cardList.length,
             rowHeightLimit: 4 - 0.2 * +5,
-            stackLimit:10
+            stackLimit: 10
         };
     },
     methods: {
@@ -34,9 +34,11 @@ export default {
 
         cardStack(i) {
             return {
-                // boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.205) inset",
+                boxShadow: "none",
                 // marginTop: i * 4 + "rem",
-                zIndex: i
+                zIndex: i,
+                transition: "unset",
+                transformStyle: "unset"
             };
         }
     },
@@ -59,7 +61,7 @@ export default {
                 "--gridAutoRows": this.rowHeightLimit + "rem",
                 "--heightDesktop":
                     "calc(243px + " +
-                    ((this.stackLimit- 1) * this.rowHeightLimit + 1.9) +
+                    ((this.stackLimit - 1) * this.rowHeightLimit + 1.9) +
                     "rem)",
                 "--heightMobile":
                     "calc(50vw + " + ((this.stackLimit - 1) * 15 + 7) + "vw)"
@@ -86,12 +88,12 @@ export default {
 
     -ms-overflow-style: none;
     scrollbar-width: none;
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
         display: none;
     }
 }
-.card{
-    transition: transform 0s
+.card {
+    transition: transform 0s;
 }
 .card:hover {
     transform: translateY(-1rem);

@@ -78,6 +78,7 @@ export default {
 
 <style lang="scss" scoped>
 .home {
+    perspective: 1000px;
     display: flex;
     flex-direction: column;
     align-items: center;
