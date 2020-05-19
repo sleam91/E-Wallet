@@ -34,7 +34,7 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-    border:1px solid rgba(0, 0, 0, 0.103);
+    
     display: flex;
     flex-direction: column;
     background: lightgrey;
@@ -50,7 +50,7 @@ export default {
     padding: 1rem;
     padding-right: 1.5rem;
     border-radius: 10px;
-    box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69);
+    box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69),0 0 0 1px rgba(0, 0, 0, 0.205) inset;
     text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.616);
     &:hover {
         cursor: pointer;

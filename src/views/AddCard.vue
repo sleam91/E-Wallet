@@ -18,11 +18,11 @@ export default {
         Card,
         CardForm
     },
-    beforeMount() {
-        if (this.$root.getCardList().length > 11) {
-            this.$router.push("/");
-        }
-    },
+    // beforeMount() {
+    //     if (this.$root.getCardList().length > 11) {
+    //         this.$router.push("/");
+    //     }
+    // },
     data() {
         return {
             emptyCard: {

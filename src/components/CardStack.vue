@@ -1,5 +1,5 @@
 <template >
-    <div class="card-stack" :style="cssCardStack">
+    <div class="card-stack" :style="[cardList.length>stackLimit?cssCardStackLimit:cssCardStack]">
         <card
             v-for="(card,i) in cardList"
             :key="card.id"
@@ -23,7 +23,8 @@ export default {
     data() {
         return {
             rowHeight: 4 - 0.2 * +this.cardList.length,
-            // height: 
+            rowHeightLimit: 4 - 0.2 * +5,
+            stackLimit:10
         };
     },
     methods: {
@@ -33,7 +34,7 @@ export default {
 
         cardStack(i) {
             return {
-                boxShadow: "none",
+                boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.205) inset",
                 // marginTop: i * 4 + "rem",
                 zIndex: i
             };
@@ -42,9 +43,26 @@ export default {
     computed: {
         cssCardStack() {
             return {
-                '--gridAutoRows': this.rowHeight+'rem',
-                '--minHeightDesktop':'calc(243px + '+((this.cardList.length-1)*this.rowHeight+1.9)+'rem)',
-                '--minHeightMobile':'calc(50vw + '+((this.cardList.length-1)*15+7)+'vw)'
+                "--gridAutoRows": this.rowHeight + "rem",
+                "--minHeightDesktop":
+                    "calc(243px + " +
+                    ((this.cardList.length - 1) * this.rowHeight + 1.9) +
+                    "rem)",
+                "--minHeightMobile":
+                    "calc(50vw + " +
+                    ((this.cardList.length - 1) * 15 + 7) +
+                    "vw)"
+            };
+        },
+        cssCardStackLimit() {
+            return {
+                "--gridAutoRows": this.rowHeightLimit + "rem",
+                "--minHeightDesktop":
+                    "calc(243px + " +
+                    ((this.stackLimit- 1) * this.rowHeightLimit + 1.9) +
+                    "rem)",
+                "--minHeightMobile":
+                    "calc(50vw + " + ((this.stackLimit - 1) * 15 + 7) + "vw)"
             };
         }
     }
@@ -63,8 +81,14 @@ export default {
     border-radius: 10px;
     // pointer-events: none;
     background: rgba(211, 211, 211, 0.363);
-    
-    overflow: visible;
+
+    overflow: scroll;
+
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    &::-webkit-scrollbar{
+        display: none;
+    }
 }
 .card:hover {
     transform: translateY(-1rem);
