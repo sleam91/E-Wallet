@@ -51,7 +51,6 @@ export default {
     min-width: 80vw;
     max-height: 50vw;
     min-height: 50vw;
-
     // width: 100%;
     // height: 100%;
 
@@ -129,9 +128,12 @@ export default {
             overflow: hidden;
             
         }
+        .ccv{
+            font-size: 1.3rem;
+        }
     }
 }
-@media screen and (min-width: 454px) {
+@media screen and (min-width: 480px) {
     .card {
         min-width: 396px;
         min-height: 243px;

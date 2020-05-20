@@ -1,5 +1,5 @@
 <template >
-    <div class="card-stack" :style="[cardList.length>stackLimit?cssCardStackLimit:cssCardStack]">
+    <div class="card-stack" :style="cardList.length>stackLimit?cssCardStackLimit:cssCardStack">
         <card
             v-for="(card,i) in cardList"
             :key="card.id"
@@ -24,7 +24,7 @@ export default {
         return {
             rowHeight: 4 - 0.2 * +this.cardList.length,
             rowHeightLimit: 4 - 0.2 * +5,
-            stackLimit: 10
+            stackLimit: 5
         };
     },
     methods: {
@@ -34,7 +34,7 @@ export default {
 
         cardStack(i) {
             return {
-                boxShadow: "none",
+                boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.205) inset",
                 // marginTop: i * 4 + "rem",
                 zIndex: i,
                 transition: "unset",
