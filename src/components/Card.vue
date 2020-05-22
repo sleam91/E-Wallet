@@ -40,7 +40,6 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-
     display: flex;
     flex-direction: column;
     background: lightgrey;
@@ -126,10 +125,9 @@ export default {
             margin-left: -4vw;
             border-bottom: 10vw solid black;
             overflow: hidden;
-            
         }
-        .ccv{
-            font-size: 1.3rem;
+        .ccv {
+            font-size: calc(1.17vw * 3.5);
         }
     }
 }
@@ -160,7 +158,9 @@ export default {
                 margin-top: 10rem;
                 margin-left: -1rem;
                 border-bottom: 4rem solid black;
-                
+            }
+            .ccv {
+                font-size: 1.3rem;
             }
         }
     }
