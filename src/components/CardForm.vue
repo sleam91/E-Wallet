@@ -52,7 +52,6 @@ export default {
     methods: {
         addCard() {
             this.card.vendor = this.card.vendor || "vendor-bitcoin.svg";
-            this.card.id = this.$root.idCounter++;
             this.card.colors.backgroundColor = this.getColorBackground();
             this.card.colors.color =
                 this.card.vendor === "vendor-bitcoin.svg" ? "black" : "white";
@@ -60,7 +59,7 @@ export default {
                 this.card.vendor === "vendor-bitcoin.svg"
                     ? "chip-dark.svg"
                     : "chip-light.svg";
-            this.$root.getCardList().push(this.card);
+            this.$store.dispatch('addCard',this.card);
         },
         update() {
             this.$emit("update", this.card);

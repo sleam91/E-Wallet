@@ -1,11 +1,11 @@
 <template >
-    <div class="card-stack" :style="cardList.length>stackLimit?cssCardStackLimit:cssCardStack">
+    <div class="card-stack" :style="cardStack.length>stackLimit?cssCardStackLimit:cssCardStack">
         <card
-            v-for="(card,i) in cardList"
+            v-for="(card,i) in cardStack"
             :key="card.id"
             :card="card"
             @click.native="chooseCard(card)"
-            :style="cardStack(i)"
+            :style="cardStyle(i)"
         />
     </div>
 </template>
@@ -15,14 +15,14 @@ import Card from "@/components/Card";
 export default {
     name: "CardStack",
     props: {
-        cardList: Array
+        cardStack: Array
     },
     components: {
         Card
     },
     data() {
         return {
-            rowHeight: 4 - 0.2 * +this.cardList.length,
+            rowHeight: 4 - 0.2 * +this.cardStack.length,
             rowHeightLimit: 4 - 0.2 * +5,
             stackLimit: 5
         };
@@ -32,7 +32,7 @@ export default {
             this.$emit("switch", card);
         },
 
-        cardStack(i) {
+        cardStyle(i) {
             return {
                 boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.205) inset",
                 // marginTop: i * 4 + "rem",
@@ -48,11 +48,11 @@ export default {
                 "--gridAutoRows": this.rowHeight + "rem",
                 "--heightDesktop":
                     "calc(243px + " +
-                    ((this.cardList.length - 1) * this.rowHeight + 1.9) +
+                    ((this.cardStack.length - 1) * this.rowHeight + 1.9) +
                     "rem)",
                 "--heightMobile":
                     "calc(50vw + " +
-                    ((this.cardList.length - 1) * 15 + 7) +
+                    ((this.cardStack.length - 1) * 15 + 7) +
                     "vw)"
             };
         },

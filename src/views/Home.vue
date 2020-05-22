@@ -11,12 +11,11 @@
             alt="remove"
             @click="toggleWarning"
         />
-        <card-stack :cardList="cardList" @switch="updateChosenCard" v-if="cardList.length>0"/>
+        <card-stack :cardStack="cardStack" @switch="updateChosenCard" v-if="cardStack.length>0"/>
         <router-link class="add-card" to="/add">
-        <!-- :style="{marginTop:this.$root.getCardList().length*0.1+14+'rem'}" -->
             <button>ADD A NEW CARD</button>
         </router-link>
-        <div class="overlay" v-if="showWarning" :style="{zIndex:cardList.length}">
+        <div class="overlay" v-if="showWarning" :style="{zIndex:cardStack.length}">
             <div class="popup">
                 <h2>Are you sure you want to delete your Active Card?</h2>
                 <button @click="removeCard">Yes</button>
@@ -43,32 +42,28 @@ export default {
         return {
             hasActiveCard: false,
             showWarning: false,
-            chosenCard: this.$root.getCard(this.$root.getChosenCardId()),
-            cardList: this.$root
-                .getCardList()
-                .filter(card => card.id !== this.$root.getChosenCardId())
+            chosenCard: this.$store.getters.getCard(this.$store.state.chosenCardId),
+            cardStack: this.$store.getters.getCardStack
         };
     },
     methods: {
         updateChosenCard(payload) {
             this.hasActiveCard = true;
-            this.chosenCard = this.$root.getCard(payload.id);
-            this.$root.setChosenCardId(payload.id);
-            this.cardList = this.$root
-                .getCardList()
-                .filter(card => card.id !== payload.id);
+            this.chosenCard = this.$store.getters.getCard(payload.id);
+            this.$store.dispatch('setChosenCardId',payload.id);
+            this.cardStack = this.$store.getters.getCardStack
         },
         toggleWarning() {
             this.showWarning = !this.showWarning;
         },
         removeCard() {
-            this.$root.removeCard(this.chosenCard.id);
+            this.$store.dispatch('removeCard',this.chosenCard.id);
             this.toggleWarning();
             this.hasActiveCard = false;
         }
     },
     beforeMount() {
-        this.hasActiveCard= this.$root.getChosenCardId()
+        this.hasActiveCard= this.$store.state.chosenCardId
     }
 };
 </script>
