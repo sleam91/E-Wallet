@@ -37,8 +37,8 @@ export default {
                 boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.205) inset",
                 // marginTop: i * 4 + "rem",
                 zIndex: i,
-                transition: "unset",
-                transformStyle: "unset"
+                transition: "none",
+                transformStyle: "none"
             };
         }
     },
@@ -64,7 +64,8 @@ export default {
                     ((this.stackLimit - 1) * this.rowHeightLimit + 1.9) +
                     "rem)",
                 "--heightMobile":
-                    "calc(50vw + " + ((this.stackLimit - 1) * 15 + 7) + "vw)"
+                    "calc(50vw + " + ((this.stackLimit - 1) * 15 + 7) + "vw)",
+                'overflow':'scroll'
             };
         }
     }
@@ -73,19 +74,17 @@ export default {
 
 <style lang="scss" scoped>
 .card-stack {
-    padding-top:1rem;
+    // padding-top:1rem;
     justify-content: center;
     display: grid;
-    // grid-template-areas: "card";
     grid-auto-rows: 15vw;
     height: var(--heightMobile);
     box-shadow: 0px 0px 15px 5px rgba(211, 211, 211, 0.69);
     margin-top: 2rem;
     border-radius: 10px;
-    // pointer-events: none;
     background: rgba(211, 211, 211, 0.363);
 
-    overflow: scroll;
+    // overflow: scroll;
 
     -ms-overflow-style: none;
     scrollbar-width: none;
@@ -100,17 +99,10 @@ export default {
     transform: translateY(-1rem);
 }
 
-// .card-stack>.card{
-//     pointer-events: auto;
-// }
-// // .card-stack:hover{
-
-// //    }
-@media screen and (min-width: 454px) {
+@media screen and (min-width: 478px) {
     .card-stack {
         grid-auto-rows: var(--gridAutoRows);
         height: var(--heightDesktop);
-        // grid-auto-rows: 4rem;
     }
 }
 </style>
