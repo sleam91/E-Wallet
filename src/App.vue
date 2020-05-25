@@ -3,6 +3,17 @@
         <router-view />
     </div>
 </template>
+<script>
+export default {
+    async beforeMount() {
+        try {
+            await this.$store.dispatch("getCardsFromDB");
+        } catch (error) {
+            throw new Error();
+        }
+    }
+};
+</script>
 
 <style lang="scss">
 body {

@@ -1,6 +1,9 @@
 <template>
     <div class="add-card">
         <top :header="'ADD A NEW <br/> BANK CARD'" />
+        <router-link to="/">
+            <button>CANCEL</button>
+        </router-link>
         <p>NEW CARD</p>
         <card :card="emptyCard" :style="[emptyCard.colors,margin]" />
         <card-form @update="update" @updateBackgroundColor="updateBackgroundColor" />

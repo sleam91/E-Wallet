@@ -3,7 +3,7 @@
         <top :header="'E-WALLET'" />
         <p v-if="hasActiveCard">ACTIVE CARD</p>
         <p v-else>SELECT A CARD</p>
-        <card :card="chosenCard" v-if="hasActiveCard"/>
+        <card :card="chosenCard" v-if="hasActiveCard" />
         <img
             class="trash"
             v-if="hasActiveCard"
@@ -42,28 +42,43 @@ export default {
         return {
             hasActiveCard: false,
             showWarning: false,
-            chosenCard: this.$store.getters.getCard(this.$store.state.chosenCardId),
-            cardStack: this.$store.getters.getCardStack
+            chosenCard: this.$store.getters.getCard(
+                this.$store.state.chosenCardId
+            )
         };
+    },
+    computed: {
+        cardStack: {
+            get() {
+                return this.$store.getters.getCardStack;
+            },
+            set(cardStack){
+                return cardStack
+            }
+        }
     },
     methods: {
         updateChosenCard(payload) {
             this.hasActiveCard = true;
             this.chosenCard = this.$store.getters.getCard(payload.id);
-            this.$store.dispatch('setChosenCardId',payload.id);
-            this.cardStack = this.$store.getters.getCardStack
+            this.$store.dispatch("setChosenCardId", payload.id);
+            this.cardStack = this.$store.getters.getCardStack;
         },
         toggleWarning() {
             this.showWarning = !this.showWarning;
         },
-        removeCard() {
-            this.$store.dispatch('removeCard',this.chosenCard.id);
+        async removeCard() {
+            try {
+                await this.$store.dispatch("removeCard", this.chosenCard.id);
+            } catch (error) {
+                throw new Error();
+            }
             this.toggleWarning();
             this.hasActiveCard = false;
         }
     },
     beforeMount() {
-        this.hasActiveCard= this.$store.state.chosenCardId
+        this.hasActiveCard = this.$store.state.chosenCardId;
     }
 };
 </script>

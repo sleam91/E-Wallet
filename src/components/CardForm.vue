@@ -1,17 +1,22 @@
 <template>
     <div class="card-form">
         <p>CARD NUMBER</p>
-        <input v-model="card.cardNumber" @input="update()" maxlength="19"/>
+        <input v-model="card.cardNumber" @input="update()" maxlength="19" />
         <p>CARD HOLDER NAME</p>
-        <input v-model="card.name" placeholder="FIRSTNAME LASTNAME" @input="update()" maxlength="24"  />
+        <input
+            v-model="card.name"
+            placeholder="FIRSTNAME LASTNAME"
+            @input="update()"
+            maxlength="24"
+        />
         <div class="date-ccv">
             <div>
                 <p>VALID THRU</p>
-                <input v-model="card.valThru" @input="update()" maxlength="5"/>
+                <input v-model="card.valThru" @input="update()" maxlength="5" />
             </div>
             <div>
                 <p>CCV</p>
-                <input v-model="card.ccv" type="number" @input="update()"/>
+                <input v-model="card.ccv" type="number" @input="update()" />
             </div>
         </div>
         <p>VENDOR</p>
@@ -50,7 +55,7 @@ export default {
         };
     },
     methods: {
-        addCard() {
+        async addCard() {
             this.card.vendor = this.card.vendor || "vendor-bitcoin.svg";
             this.card.colors.backgroundColor = this.getColorBackground();
             this.card.colors.color =
@@ -59,7 +64,12 @@ export default {
                 this.card.vendor === "vendor-bitcoin.svg"
                     ? "chip-dark.svg"
                     : "chip-light.svg";
-            this.$store.dispatch('addCard',this.card);
+            this.card.id = ++this.$store.state.idCounter;
+            try {
+                await this.$store.dispatch("addCard", this.card);
+            } catch (error) {
+                throw new Error(error);
+            }
         },
         update() {
             this.$emit("update", this.card);
