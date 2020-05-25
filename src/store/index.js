@@ -70,19 +70,22 @@ export default new Vuex.Store({
     },
     addCard(state, card) {
       state.cardList.push(card);
-      localStorage.setItem('idCounter', card.id)
+      // localStorage.setItem('idCounter', card.id)
     },
     removeCard(state, id) {
       state.chosenCardId = 0
       state.cardList = state.cardList.filter(card => card.id != id)
     },
     setInitialId(state) {
-      if (localStorage.getItem('idCounter')) {
-        state.idCounter = localStorage.getItem('idCounter')
-      } else {
-        state.idCounter = state.cardList.length || 1
-        localStorage.setItem('idCounter', state.idCounter)
+      // if (localStorage.getItem('idCounter')) {
+      //   state.idCounter = localStorage.getItem('idCounter')
+      // } else {
+      // console.log(state.cardList[state.cardList.length-1]||"nope")
+      if (state.cardList.length) {
+        state.idCounter = state.cardList[state.cardList.length - 1].id
       }
+      // localStorage.setItem('idCounter', state.idCounter)
+      // }
     },
     setChosenCardId(state, id) {
       state.chosenCardId = id
@@ -90,8 +93,8 @@ export default new Vuex.Store({
   },
   actions: {
     async getCardsFromDB(context) {
-      let cards=  await API.getAllCards()
-      context.commit('setInitialCards',cards)
+      let cards = await API.getAllCards()
+      context.commit('setInitialCards', cards)
       context.commit('setInitialId')
     },
     async addCard(context, card) {

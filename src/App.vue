@@ -9,7 +9,7 @@ export default {
         try {
             await this.$store.dispatch("getCardsFromDB");
         } catch (error) {
-            throw new Error();
+            throw new Error(error);
         }
     }
 };

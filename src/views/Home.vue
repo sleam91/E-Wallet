@@ -71,7 +71,7 @@ export default {
             try {
                 await this.$store.dispatch("removeCard", this.chosenCard.id);
             } catch (error) {
-                throw new Error();
+                throw new Error(error);
             }
             this.toggleWarning();
             this.hasActiveCard = false;
