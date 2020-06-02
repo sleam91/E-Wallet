@@ -5,7 +5,7 @@
             :key="card.id"
             :card="card"
             @click.native="chooseCard(card)"
-            :style="cardStyle(i)"
+            :style="{zIndex:i}"
         />
     </div>
 </template>
@@ -31,16 +31,6 @@ export default {
         chooseCard(card) {
             this.$emit("switch", card);
         },
-
-        cardStyle(i) {
-            return {
-                boxShadow: "0 0 0 1px rgba(0, 0, 0, 0.205) inset",
-                // marginTop: i * 4 + "rem",
-                zIndex: i,
-                transition: "none",
-                transformStyle: "none"
-            };
-        }
     },
     computed: {
         cssCardStack() {
@@ -94,6 +84,9 @@ export default {
 }
 .card {
     transition: transform 0s;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.205) inset;
+    transition: none;
+    transform-style: none;
 }
 .card:hover {
     transform: translateY(-1rem);
