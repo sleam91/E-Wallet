@@ -5,7 +5,7 @@
             <button>CANCEL</button>
         </router-link>
         <p>NEW CARD</p>
-        <card :card="emptyCard" :style="[emptyCard.colors,margin]" />
+        <card :card="emptyCard" :style="emptyCard.colors" />
         <card-form @update="update" @updateBackgroundColor="updateBackgroundColor" />
     </div>
 </template>
@@ -36,10 +36,6 @@ export default {
                     color: "black"
                 }
             },
-            margin: {
-                marginLeft: "1rem",
-                marginRight: "1rem"
-            }
         };
     },
     methods: {
@@ -85,6 +81,10 @@ export default {
     flex-direction: column;
     align-items: center;
     perspective: 1000px;
+    .card{
+        margin-left: 1rem;
+        margin-right: 1rem
+    }
     // max-width: 434px;
     // margin-left: 1rem;
     // margin-right: 1rem;
