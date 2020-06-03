@@ -1,9 +1,9 @@
 <template>
-    <div class="card" :style="card.colors">
+    <div class="card" :class="colors">
         <div class="front-card">
             <div class="icons">
                 <img class="chip" :src="require('@/assets/'+chip)" alt />
-                <img class="vendor" :src="require('@/assets/'+card.vendor)" alt />
+                <img class="vendor" :src="require('@/assets/'+vendor)" alt />
             </div>
             <h1>{{card.cardNumber}}</h1>
             <div class="card-bottom">
@@ -35,16 +35,49 @@ export default {
     },
     methods: {},
     computed: {
+        colors() {
+            return {
+                "no-vendor": !this.card.vendor,
+                bitcoin: this.card.vendor === "vendor-bitcoin.svg",
+                blockchain: this.card.vendor === "vendor-blockchain.svg",
+                evil: this.card.vendor === "vendor-evil.svg",
+                ninja: this.card.vendor === "vendor-ninja.svg"
+            };
+        },
         chip() {
-            return this.card.vendor === "vendor-bitcoin.svg"
+            return this.card.vendor === "vendor-bitcoin.svg" ||
+                this.card.vendor === ""
                 ? "chip-dark.svg"
                 : "chip-light.svg";
+        },
+        vendor() {
+            return this.card.vendor || "vendor-bitcoin.svg";
         }
     }
 };
 </script>
 
 <style lang="scss" scoped>
+.no-vendor {
+    background-color: rgb(214, 214, 214);
+    color: black;
+}
+.bitcoin {
+    background-color: rgb(255, 180, 66);
+    color: black;
+}
+.evil {
+    background-color: rgb(233, 47, 78);
+    color: white;
+}
+.blockchain {
+    background-color: rgb(127, 80, 228);
+    color: white;
+}
+.ninja {
+    background-color: rgb(54, 54, 54);
+    color: white;
+}
 .card {
     display: flex;
     flex-direction: column;

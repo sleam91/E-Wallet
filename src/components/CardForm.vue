@@ -20,7 +20,7 @@
             </div>
         </div>
         <p>VENDOR</p>
-        <select v-model="card.vendor" id="vendor" @change="updateBackgroundColor()">
+        <select v-model="card.vendor" id="vendor" @change="update()">
             <option disabled hidden></option>
             <option value="vendor-bitcoin.svg">BITCOIN INC</option>
             <option value="vendor-ninja.svg">NINJA BANK</option>
@@ -65,9 +65,6 @@ export default {
         },
         update() {
             this.$emit("update", this.card);
-        },
-        updateBackgroundColor() {
-            this.$emit("updateBackgroundColor", this.card);
         },
     }
 };

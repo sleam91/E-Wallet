@@ -5,8 +5,8 @@
             <button>CANCEL</button>
         </router-link>
         <p>NEW CARD</p>
-        <card :card="emptyCard" :class="colors" />
-        <card-form @update="update" @updateBackgroundColor="updateBackgroundColor" />
+        <card :card="emptyCard" />
+        <card-form @update="update"/>
     </div>
 </template>
 
@@ -29,9 +29,8 @@ export default {
                 name: "FIRSTNAME LASTNAME",
                 valThru: "MM/YY",
                 ccv: null,
-                vendor: "vendor-bitcoin.svg",
+                vendor: "",
             },
-            colors:'no-vendor',
         };
     },
     methods: {
@@ -41,27 +40,8 @@ export default {
             this.emptyCard.name = payload.name || this.emptyCard.name;
             this.emptyCard.valThru = payload.valThru || this.emptyCard.valThru;
             this.emptyCard.ccv = payload.ccv;
+            this.emptyCard.vendor = payload.vendor;
         },
-        updateBackgroundColor(payload) {
-            this.emptyCard.vendor = payload.vendor || this.emptyCard.vendor;
-            this.getColorBackground();
-        },
-        getColorBackground() {
-            switch (this.emptyCard.vendor) {
-                case "vendor-bitcoin.svg":
-                    this.colors='bitcoin'
-                    break;
-                case "vendor-blockchain.svg":
-                    this.colors='blockchain'
-                    break;
-                case "vendor-evil.svg":
-                    this.colors='evil'
-                    break;
-                case "vendor-ninja.svg":
-                    this.colors='ninja'
-                    break;
-            }
-        }
     }
 };
 </script>
