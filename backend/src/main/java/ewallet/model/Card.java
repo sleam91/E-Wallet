@@ -1,6 +1,5 @@
 package ewallet.model;
 
-import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -15,10 +14,6 @@ public class Card {
     private String valThru;
     private int ccv;
     private String vendor;
-    private String chip;
-    
-    @Embedded
-    private Colors colors;
 	
 	
 	public Card() {
@@ -26,8 +21,7 @@ public class Card {
 	}
 
 
-	public Card(int id, String cardNumber, String name, String valThru, int ccv, String vendor, String chip,
-			Colors colors) {
+	public Card(int id, String cardNumber, String name, String valThru, int ccv, String vendor) {
 		super();
 		this.id = id;
 		this.cardNumber = cardNumber;
@@ -35,8 +29,6 @@ public class Card {
 		this.valThru = valThru;
 		this.ccv = ccv;
 		this.vendor = vendor;
-		this.chip = chip;
-		this.colors = colors;
 	}
 
 
@@ -97,26 +89,6 @@ public class Card {
 
 	public void setVendor(String vendor) {
 		this.vendor = vendor;
-	}
-
-
-	public String getChip() {
-		return chip;
-	}
-
-
-	public void setChip(String chip) {
-		this.chip = chip;
-	}
-
-
-	public Colors getColors() {
-		return colors;
-	}
-
-
-	public void setColors(Colors colors) {
-		this.colors = colors;
 	}
 	
 
