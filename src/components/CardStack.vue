@@ -22,8 +22,8 @@ export default {
     },
     data() {
         return {
-            rowHeight: 4 - 0.2 * +this.cardStack.length,
-            rowHeightLimit: 4 - 0.2 * +5,
+            rowHeight: 4 - 0.2 * this.cardStack.length,
+            rowHeightLimit: 4 - 0.2 * 5,
             stackLimit: 5
         };
     },
@@ -92,7 +92,7 @@ export default {
     transform: translateY(-1rem);
 }
 
-@media screen and (min-width: 478px) {
+@media screen and (min-width: 480px) {
     .card-stack {
         grid-auto-rows: var(--gridAutoRows);
         height: var(--heightDesktop);

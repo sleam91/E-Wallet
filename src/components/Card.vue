@@ -152,14 +152,10 @@ export default {
         -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         transform: rotateX(180deg) translateY(20vw);
-
-        // display: none;
         width: 100%;
         height: 100%;
         .line {
-            // margin-top: 0.2vw;
             width: calc(100% + 9.5vw);
-            // width: 100%;
             margin-left: -4vw;
             border-bottom: 10vw solid black;
             overflow: hidden;
@@ -193,7 +189,6 @@ export default {
             transform: rotateX(180deg) translateY(100px);
             .line {
                 width: 110%;
-                margin-top: 10rem;
                 margin-left: -1rem;
                 border-bottom: 4rem solid black;
             }
