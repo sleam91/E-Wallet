@@ -47,19 +47,12 @@ export default {
                 ccv: null,
                 vendor: "",
                 chip: "chip-dark.svg",
-                colors: {
-                    backgroundColor: "rgba(214, 214, 214)",
-                    color: "black"
-                }
             }
         };
     },
     methods: {
         async addCard() {
             this.card.vendor = this.card.vendor || "vendor-bitcoin.svg";
-            this.card.colors.backgroundColor = this.getColorBackground();
-            this.card.colors.color =
-                this.card.vendor === "vendor-bitcoin.svg" ? "black" : "white";
             this.card.chip =
                 this.card.vendor === "vendor-bitcoin.svg"
                     ? "chip-dark.svg"
@@ -81,24 +74,6 @@ export default {
                     : "chip-light.svg";
             this.$emit("updateBackgroundColor", this.card);
         },
-        getColorBackground() {
-            let backgroundColor;
-            switch (this.card.vendor || "vendor-bitcoin.svg") {
-                case "vendor-bitcoin.svg":
-                    backgroundColor = "rgba(255, 180, 66)";
-                    break;
-                case "vendor-blockchain.svg":
-                    backgroundColor = "rgba(127, 80, 228)";
-                    break;
-                case "vendor-evil.svg":
-                    backgroundColor = "rgba(233, 47, 78)";
-                    break;
-                case "vendor-ninja.svg":
-                    backgroundColor = "rgba(54, 54, 54)";
-                    break;
-            }
-            return backgroundColor;
-        }
     }
 };
 </script>

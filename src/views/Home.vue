@@ -3,7 +3,7 @@
         <top :header="'E-WALLET'" />
         <p v-if="hasActiveCard">ACTIVE CARD</p>
         <p v-else>SELECT A CARD</p>
-        <card :card="chosenCard" v-if="hasActiveCard" />
+        <card :class="colors" :card="chosenCard" v-if="hasActiveCard" />
         <img
             class="trash"
             v-if="hasActiveCard"
@@ -54,6 +54,14 @@ export default {
             },
             set(cardStack){
                 return cardStack
+            }
+        },
+        colors(){
+            return {
+                bitcoin:this.chosenCard.vendor==='vendor-bitcoin.svg',
+                blockchain:this.chosenCard.vendor==='vendor-blockchain.svg',
+                evil:this.chosenCard.vendor==='vendor-evil.svg',
+                ninja:this.chosenCard.vendor==='vendor-ninja.svg'
             }
         }
     },

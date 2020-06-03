@@ -5,7 +5,7 @@
             <button>CANCEL</button>
         </router-link>
         <p>NEW CARD</p>
-        <card :card="emptyCard" :style="emptyCard.colors" />
+        <card :card="emptyCard" :class="colors" />
         <card-form @update="update" @updateBackgroundColor="updateBackgroundColor" />
     </div>
 </template>
@@ -31,11 +31,8 @@ export default {
                 ccv: null,
                 vendor: "vendor-bitcoin.svg",
                 chip: "chip-dark.svg",
-                colors: {
-                    backgroundColor: "rgba(214, 214, 214)",
-                    color: "black"
-                }
             },
+            colors:'no-vendor',
         };
     },
     methods: {
@@ -48,28 +45,24 @@ export default {
         },
         updateBackgroundColor(payload) {
             this.emptyCard.vendor = payload.vendor || this.emptyCard.vendor;
-            this.emptyCard.colors.backgroundColor = this.getColorBackground();
-            this.emptyCard.colors.color =
-                payload.vendor === "vendor-bitcoin.svg" ? "black" : "white";
+            this.getColorBackground();
             this.emptyCard.chip = payload.chip || this.emptyCard.chip;
         },
         getColorBackground() {
-            let backgroundColor;
             switch (this.emptyCard.vendor) {
                 case "vendor-bitcoin.svg":
-                    backgroundColor = "rgba(255, 180, 66)";
+                    this.colors='bitcoin'
                     break;
                 case "vendor-blockchain.svg":
-                    backgroundColor = "rgba(127, 80, 228)";
+                    this.colors='blockchain'
                     break;
                 case "vendor-evil.svg":
-                    backgroundColor = "rgba(233, 47, 78)";
+                    this.colors='evil'
                     break;
                 case "vendor-ninja.svg":
-                    backgroundColor = "rgba(54, 54, 54)";
+                    this.colors='ninja'
                     break;
             }
-            return backgroundColor;
         }
     }
 };
@@ -85,6 +78,7 @@ export default {
         margin-left: 1rem;
         margin-right: 1rem
     }
+
     // max-width: 434px;
     // margin-left: 1rem;
     // margin-right: 1rem;

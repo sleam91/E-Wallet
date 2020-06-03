@@ -4,6 +4,7 @@
             v-for="(card,i) in cardStack"
             :key="card.id"
             :card="card"
+            :class="colors(card.vendor)"
             @click.native="chooseCard(card)"
             :style="{zIndex:i}"
         />
@@ -30,6 +31,14 @@ export default {
     methods: {
         chooseCard(card) {
             this.$emit("switch", card);
+        },        
+        colors(vendor){
+            return {
+                bitcoin:vendor==='vendor-bitcoin.svg',
+                blockchain:vendor==='vendor-blockchain.svg',
+                evil:vendor==='vendor-evil.svg',
+                ninja:vendor==='vendor-ninja.svg'
+            }
         },
     },
     computed: {

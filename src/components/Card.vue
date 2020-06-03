@@ -42,7 +42,6 @@ export default {
 .card {
     display: flex;
     flex-direction: column;
-    background: lightgrey;
     font-family: "PT Mono", monospace;
     text-transform: uppercase;
     // width: 90%;
