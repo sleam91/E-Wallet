@@ -53,6 +53,10 @@ export default {
     methods: {
         async addCard() {
             this.card.vendor = this.card.vendor || "vendor-bitcoin.svg";
+            this.card.cardNumber = this.card.cardNumber || "XXXX XXXX XXXX XXXX";
+            this.card.name = this.card.name || 'FIRSTNAME LASTNAME';
+            this.card.ccv = this.card.ccv || 999;
+            this.card.valThru = this.card.valThru || "DD/YY";
             this.card.chip =
                 this.card.vendor === "vendor-bitcoin.svg"
                     ? "chip-dark.svg"
