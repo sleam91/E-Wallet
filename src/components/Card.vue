@@ -2,7 +2,7 @@
     <div class="card" :style="card.colors">
         <div class="front-card">
             <div class="icons">
-                <img class="chip" :src="require('@/assets/'+card.chip)" alt />
+                <img class="chip" :src="require('@/assets/'+chip)" alt />
                 <img class="vendor" :src="require('@/assets/'+card.vendor)" alt />
             </div>
             <h1>{{card.cardNumber}}</h1>
@@ -34,7 +34,13 @@ export default {
         return {};
     },
     methods: {},
-    computed: {}
+    computed: {
+        chip() {
+            return this.card.vendor === "vendor-bitcoin.svg"
+                ? "chip-dark.svg"
+                : "chip-light.svg";
+        }
+    }
 };
 </script>
 

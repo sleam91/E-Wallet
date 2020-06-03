@@ -30,7 +30,6 @@ export default {
                 valThru: "MM/YY",
                 ccv: null,
                 vendor: "vendor-bitcoin.svg",
-                chip: "chip-dark.svg",
             },
             colors:'no-vendor',
         };
@@ -46,7 +45,6 @@ export default {
         updateBackgroundColor(payload) {
             this.emptyCard.vendor = payload.vendor || this.emptyCard.vendor;
             this.getColorBackground();
-            this.emptyCard.chip = payload.chip || this.emptyCard.chip;
         },
         getColorBackground() {
             switch (this.emptyCard.vendor) {

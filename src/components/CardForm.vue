@@ -46,7 +46,6 @@ export default {
                 valThru: "",
                 ccv: null,
                 vendor: "",
-                chip: "chip-dark.svg",
             }
         };
     },
@@ -57,10 +56,6 @@ export default {
             this.card.name = this.card.name || 'FIRSTNAME LASTNAME';
             this.card.ccv = this.card.ccv || 999;
             this.card.valThru = this.card.valThru || "DD/YY";
-            this.card.chip =
-                this.card.vendor === "vendor-bitcoin.svg"
-                    ? "chip-dark.svg"
-                    : "chip-light.svg";
             this.card.id = ++this.$store.state.idCounter;
             try {
                 await this.$store.dispatch("addCard", this.card);
@@ -72,10 +67,6 @@ export default {
             this.$emit("update", this.card);
         },
         updateBackgroundColor() {
-            this.card.chip =
-                this.card.vendor === "vendor-bitcoin.svg"
-                    ? "chip-dark.svg"
-                    : "chip-light.svg";
             this.$emit("updateBackgroundColor", this.card);
         },
     }
